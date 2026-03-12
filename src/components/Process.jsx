@@ -36,14 +36,14 @@ const Process = () => {
             </div>
 
             <div className="container">
-                <div className="section-header">
+                <div className="section-header reveal reveal-up">
                     <h2 className="section-title">{t('process_title_1')}<span className="text-gradient">{t('process_title_2')}</span></h2>
                     <p className="section-subtitle">{t('process_subtitle')}</p>
                 </div>
 
                 <div className="process-timeline">
                     {steps.map((step, index) => (
-                        <div key={step.id} className="process-step">
+                        <div key={step.id} className={`process-step reveal reveal-up delay-${index + 1}`}>
                             <div className="step-number">0{step.id}</div>
                             <div className="step-icon-wrapper">
                                 {step.icon}

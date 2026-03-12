@@ -31,7 +31,7 @@ const Menu = () => {
             </div>
 
             <div className="container relative z-10">
-                <div className="section-header text-center">
+                <div className="section-header text-center reveal reveal-up">
                     <div className="premium-subtitle">
                         <span className="line"></span>
                         <span className="text">{t('menu_premium_subtitle')}</span>
@@ -43,7 +43,7 @@ const Menu = () => {
                     <p className="section-subtitle-large">{t('menu_subtitle')}</p>
                 </div>
 
-                <div className="menu-tabs">
+                <div className="menu-tabs reveal reveal-up delay-1">
                     <button
                         className={`tab-btn ${activeTab === 'doner_station' ? 'active' : ''}`}
                         onClick={() => setActiveTab('doner_station')}
@@ -69,8 +69,8 @@ const Menu = () => {
 
                 <div className="menu-content">
                     <div className="menu-grid">
-                        {menuItems[activeTab].map(item => (
-                            <div key={item.id} className="menu-item-premium group">
+                        {menuItems[activeTab].map((item, index) => (
+                            <div key={item.id} className={`menu-item-premium group reveal reveal-up delay-${(index % 3) + 1}`}>
                                 <div className="card-border-gradient-menu"></div>
                                 <div className="menu-item-content">
                                     {/* Package Image */}

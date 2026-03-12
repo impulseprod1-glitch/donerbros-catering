@@ -42,7 +42,7 @@ const Services = () => {
             </div>
 
             <div className="container relative z-10">
-                <div className="section-header text-center">
+                <div className="section-header text-center reveal reveal-up">
                     <div className="premium-subtitle">
                         <span className="line"></span>
                         <span className="text">{t('services_premium_subtitle')}</span>
@@ -55,8 +55,8 @@ const Services = () => {
                 </div>
 
                 <div className="services-grid">
-                    {services.map(service => (
-                        <div key={service.id} className="service-card-premium group">
+                    {services.map((service, index) => (
+                        <div key={service.id} className={`service-card-premium group reveal reveal-up delay-${index + 1}`}>
                             {/* Animated Glowing Border */}
                             <div className="card-border-gradient" style={{ '--accent': service.accentColor }}></div>
 

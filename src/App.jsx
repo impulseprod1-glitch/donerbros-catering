@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import Legal from './components/Legal';
 import WhatsAppButton from './components/WhatsAppButton';
 import ConsentManager from './components/ConsentManager';
+import useScrollReveal from './hooks/useScrollReveal';
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -21,26 +22,8 @@ function App() {
     setShowIntro(false);
   }, []);
 
-  useEffect(() => {
-    if (showIntro) return; // Wait until intro is done
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
-
-    document.querySelectorAll('.section, .service-card, .menu-item-card, .process-step, .review-card').forEach((el) => {
-      el.classList.add('fade-in-section');
-      observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, [showIntro]);
+  // Initialize premium scroll reveal animations
+  useScrollReveal();
 
   return (
     <LanguageProvider>

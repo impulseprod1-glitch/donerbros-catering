@@ -58,7 +58,7 @@ const Reviews = () => {
     return (
         <section className="reviews section" id="reviews">
             <div className="container">
-                <div className="section-header text-center">
+                <div className="section-header text-center reveal reveal-up">
                     <span className="section-subtitle">
                         <MessageCircle size={16} className="subtitle-icon" /> {t('reviews_premium_subtitle')}
                     </span>
