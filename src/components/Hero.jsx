@@ -196,7 +196,7 @@ const Hero = () => {
                         <div className="image-frame">
                             <div className="frame-glow"></div>
                             <img
-                                src="/hero-image.png"
+                                src={`${import.meta.env.BASE_URL}hero-image.png`}
                                 alt="Premium Döner Catering Berlin - Dönerbros"
                                 className="hero-image"
                             />

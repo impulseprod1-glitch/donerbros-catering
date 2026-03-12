@@ -8,17 +8,17 @@ const Menu = () => {
 
     const menuItems = {
         doner_station: [
-            { id: 1, nameKey: 'menu_item_1_name', descKey: 'menu_item_1_desc', priceKey: 'menu_price_default', image: '/menu-beef-doner.png' },
-            { id: 2, nameKey: 'menu_item_2_name', descKey: 'menu_item_2_desc', priceKey: 'menu_price_default', image: '/menu-chicken-doner.png' },
-            { id: 3, nameKey: 'menu_item_3_name', descKey: 'menu_item_3_desc', priceKey: 'menu_price_default', image: '/menu-mixed-doner.png' }
+            { id: 1, nameKey: 'menu_item_1_name', descKey: 'menu_item_1_desc', priceKey: 'menu_price_default', image: `${import.meta.env.BASE_URL}menu-beef-doner.png` },
+            { id: 2, nameKey: 'menu_item_2_name', descKey: 'menu_item_2_desc', priceKey: 'menu_price_default', image: `${import.meta.env.BASE_URL}menu-chicken-doner.png` },
+            { id: 3, nameKey: 'menu_item_3_name', descKey: 'menu_item_3_desc', priceKey: 'menu_price_default', image: `${import.meta.env.BASE_URL}menu-mixed-doner.png` }
         ],
         burger_station: [
-            { id: 4, nameKey: 'menu_item_4_name', descKey: 'menu_item_4_desc', priceKey: 'menu_price_default', image: '/menu-burgers.png' },
-            { id: 5, nameKey: 'menu_item_5_name', descKey: 'menu_item_5_desc', priceKey: 'menu_price_default', image: '/menu-street-food.png' }
+            { id: 4, nameKey: 'menu_item_4_name', descKey: 'menu_item_4_desc', priceKey: 'menu_price_default', image: `${import.meta.env.BASE_URL}menu-burgers.png` },
+            { id: 5, nameKey: 'menu_item_5_name', descKey: 'menu_item_5_desc', priceKey: 'menu_price_default', image: `${import.meta.env.BASE_URL}menu-street-food.png` }
         ],
         vegan_veggie: [
-            { id: 6, nameKey: 'menu_item_6_name', descKey: 'menu_item_6_desc', priceKey: 'menu_price_default', image: '/menu-mixed-doner.png' },
-            { id: 7, nameKey: 'menu_item_7_name', descKey: 'menu_item_7_desc', priceKey: 'menu_price_default', image: '/menu-street-food.png' }
+            { id: 6, nameKey: 'menu_item_6_name', descKey: 'menu_item_6_desc', priceKey: 'menu_price_default', image: `${import.meta.env.BASE_URL}menu-mixed-doner.png` },
+            { id: 7, nameKey: 'menu_item_7_name', descKey: 'menu_item_7_desc', priceKey: 'menu_price_default', image: `${import.meta.env.BASE_URL}menu-street-food.png` }
         ]
     };
 
