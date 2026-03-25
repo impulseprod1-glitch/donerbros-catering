@@ -15,14 +15,8 @@ const WhatsAppButton = () => {
             setIsVisible(true);
         }, 3500);
 
-        // Show bubble after 6 seconds
-        const bubbleTimer = setTimeout(() => {
-            setShowBubble(true);
-        }, 6000);
-
         return () => {
             clearTimeout(timer);
-            clearTimeout(bubbleTimer);
         };
     }, []);
 
@@ -34,15 +28,6 @@ const WhatsAppButton = () => {
 
     return (
         <div className="wa-container-wrapper">
-            {showBubble && (
-                <div className="wa-chat-bubble reveal-active">
-                    <p className="wa-bubble-text">{t('wa_bubble')}</p>
-                    <button className="wa-bubble-close" onClick={(e) => {
-                        e.stopPropagation();
-                        setShowBubble(false);
-                    }}>×</button>
-                </div>
-            )}
             <div className="wa-container" onClick={handleClick}>
                 <div className="wa-pulse"></div>
                 <div className="wa-pulse-delay"></div>
