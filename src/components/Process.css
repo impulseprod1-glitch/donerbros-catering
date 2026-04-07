@@ -180,7 +180,8 @@
 @media (max-width: 992px) {
   .process-timeline {
     flex-direction: column;
-    gap: 4rem;
+    gap: 3rem;
+    margin-top: 3rem;
   }
   
   .step-connector {
@@ -188,7 +189,7 @@
     left: 50%;
     top: 100%;
     width: 2px;
-    height: 4rem;
+    height: 3rem;
     transform: translateX(-50%);
     background: linear-gradient(180deg, 
       transparent 0%, 
@@ -204,5 +205,30 @@
     bottom: -4px;
     right: auto;
     left: -3px;
+  }
+
+  .step-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+  }
+
+  .step-number {
+    font-size: 4rem;
+    top: -30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .process-step {
+    padding: 0 1rem;
+  }
+
+  .step-title {
+    font-size: 1.25rem;
+  }
+
+  .step-desc {
+    font-size: 0.9rem;
   }
 }

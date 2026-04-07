@@ -17,11 +17,13 @@ const ConsentManager = () => {
 
     const handleAccept = () => {
         localStorage.setItem('site_consent_v1', 'accepted');
+        window.dispatchEvent(new CustomEvent('consentChanged', { detail: 'accepted' }));
         setIsVisible(false);
     };
 
     const handleDecline = () => {
         localStorage.setItem('site_consent_v1', 'declined');
+        window.dispatchEvent(new CustomEvent('consentChanged', { detail: 'declined' }));
         setIsVisible(false);
     };
 

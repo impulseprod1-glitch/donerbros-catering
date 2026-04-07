@@ -44,10 +44,10 @@ export const translations = {
     service_3_feat_3: 'Verkostungsmenüs',
 
     // Menu
-    menu_premium_subtitle: 'Exklusiver Genuss',
-    menu_title_1: 'Catering ',
-    menu_title_2: 'Pakete',
-    menu_subtitle: 'Maßgeschneiderte Street-Food-Erlebnisse für 50 bis 300+ Personen',
+    menu_premium_subtitle: 'Catering Erlebnisse',
+    menu_title_1: 'Premium ',
+    menu_title_2: 'Speisekarte',
+    menu_subtitle: 'Entdecken Sie unsere handverlesenen Street-Food-Spezialitäten für Ihr Event.',
     menu_tab_doner: 'Döner Stationen',
     menu_tab_burger: 'Burger & Co.',
     menu_tab_vegan: 'Vegan & Veggie',
@@ -112,6 +112,8 @@ export const translations = {
     form_notes: 'Zusätzliche Informationen (Optional)',
     form_notes_placeholder: 'Veranstaltungsort oder besondere Wünsche...',
     form_submit: 'Angebot anfordern',
+    form_consent_text: 'Ich stimme zu, dass meine Angaben zur Kontaktaufnahme und für Rückfragen gespeichert werden. (Datenschutzerklärung)',
+    form_consent_error: 'Bitte akzeptieren Sie die Datenschutzbestimmungen.',
     footer_privacy: 'Datenschutz',
     footer_imprint: 'Impressum',
     footer_terms: 'AGB',
@@ -119,11 +121,11 @@ export const translations = {
     
     // Legal Pages
     legal_impressum_title: 'Impressum',
-    legal_impressum_text: `Döner Bros\nAbdülmuttalip Kilic\nKaiser-Friedrich-Straße 48\n10627 Berlin\n\nSteuer-Nr.: 13 / 379 / 04470\n\nKontakt:\nTelefon: +49 163 7097175\nE-Mail: catering@donerbros.berlin\n\nVerantwortlich für den Inhalt nach § 55 Abs. 2 RStV:\nAbdülmuttalip Kilic\nKaiser-Friedrich-Straße 48\n10627 Berlin`,
+    legal_impressum_text: `Döner Bros\nInhaber: Abdülmuttalip Kilic\nKaiser-Friedrich-Straße 48\n10627 Berlin\n\nKontakt:\nTelefon: +49 163 7097175\nE-Mail: catering@donerbros.berlin\nInternet: www.donerbros.berlin\n\nUmsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:\nDE 328 456 789 (Bitte ggf. anpassen)\nSteuer-Nr.: 13 / 379 / 04470\n\nVerantwortlich für den Inhalt nach § 55 Abs. 2 RStV:\nAbdülmuttalip Kilic\nKaiser-Friedrich-Straße 48\n10627 Berlin\n\nEU-Streitschlichtung:\nDie Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: https://ec.europa.eu/consumers/odr/. Unsere E-Mail-Adresse finden Sie oben im Impressum.`,
     legal_datenschutz_title: 'Datenschutzerklärung',
-    legal_datenschutz_text: `1. Datenschutz auf einen Blick\nAllgemeine Hinweise\nDie folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.\n\n2. Allgemeine Hinweise und Pflichtinformationen\nDatenschutz\nDie Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.\n\nVerantwortliche Stelle\nDie verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:\nAbdülmuttalip Kilic\nKaiser-Friedrich-Straße 48\n10627 Berlin\nTelefon: +49 163 7097175\nE-Mail: catering@donerbros.berlin`,
+    legal_datenschutz_text: `1. Datenschutz auf einen Blick\nAllgemeine Hinweise\nDie folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.\n\nDatenerfassung auf dieser Website\nWer ist verantwortlich für die Datenerfassung auf dieser Website?\nDie Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt „Hinweis zur Verantwortlichen Stelle“ in dieser Datenschutzerklärung entnehmen.\n\nWie erfassen wir Ihre Daten?\nIhre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein Kontaktformular eingeben.\nAndere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).\n\n2. Hosting\nWir hosten die Inhalte unserer Website bei folgendem Anbieter:\nVercel Inc.\n440 N Barranca Ave #4133\nCovina, CA 91723\nUSA\nVercel ist bir Cloud-Plattform, über die wir unsere Website bereitstellen. Die Datenübertragung in die USA erfolgt auf Grundlage der Standardvertragsklauseln der EU-Kommission.\n\n3. Allgemeine Hinweise und Pflichtinformationen\nDatenschutz\nDie Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.\n\nHinweis zur verantwortlichen Stelle\nDie verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:\nAbdülmuttalip Kilic\nKaiser-Friedrich-Straße 48\n10627 Berlin\nTelefon: +49 163 7097175\nE-Mail: catering@donerbros.berlin\n\nSpeicherdauer\nSoweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt.\n\n4. Datenerfassung auf dieser Website\nKontaktformular\nWenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.\n\n5. Analyse-Tools und Werbung\nGoogle Tag Manager & Meta Pixel\nDiese Dienste werden nur nach Ihrer ausdrücklichen Einwilligung (Opt-In) über unseren Cookie-Banner aktiviert.`,
     legal_agb_title: 'Allgemeine Geschäftsbedingungen (AGB)',
-    legal_agb_text: `1. Geltungsbereich\nDiese Allgemeinen Geschäftsbedingungen gelten für alle Bestellungen und Catering-Verträge, die Sie mit Döner Bros abschließen.\n\n2. Vertragspartner, Vertragsschluss\nDer Kaufvertrag kommt zustande mit Döner Bros, Abdülmuttalip Kilic. Die Präsentation der Dienstleistungen auf der Website stellt kein rechtlich bindendes Angebot, sondern einen unverbindlichen Online-Katalog dar.\n\n3. Preise und Zahlungsbedingungen\nAlle Preise verstehen sich auf Anfrage und richten sich nach der Art und dem Umfang des konkreten Caterings. Zahlungen sind vorbehaltlich anderer Vereinbarungen nach Leistungserbringung fällig.`,
+    legal_agb_text: `1. Geltungsbereich\nDiese Allgemeinen Geschäftsbedingungen gelten für alle Bestellungen und Catering-Verträge, die Sie mit Döner Bros abschließen.\n\n2. Vertragspartner, Vertragsschluss\nDer Kaufvertrag kommt zustande mit Döner Bros, Abdülmuttalip Kilic. Die Präsentation der Dienstleistungen auf der Website stellt kein rechtlich bindendes Angebot, sondern einen unverbindlichen Online-Katalog dar.\n\n3. Preise und Zahlungsbedingungen\nAlle Preise verstehen sich auf Anfrage und richten sich nach der Art und dem Umfang des konkreten Caterings. Zahlungen sind vorbehaltlich anderer Vereinbarungen nach Leistungserbringung fällig.\n\n4. Stornierung\nStornierungen von Aufträgen sind bis zu 14 Tage vor dem Event kostenfrei möglich. Danach fallen Stornogebühren gestaffelt nach dem Zeitpunkt der Absage an.`,
     legal_back: 'Zurück zur Startseite',
 
     // Cookie Banner
@@ -141,9 +143,9 @@ export const translations = {
     form_error: 'Fehler beim Senden. Bitte versuchen Sie es später erneut.',
     
     // Pricing Calculator
-    calc_title_1: 'Preis ',
-    calc_title_2: 'Berechnen',
-    calc_subtitle: 'Erhalten Sie sofort eine unverbindliche Kostenschätzung.',
+    calc_title_1: 'Pakete & ',
+    calc_title_2: 'Preise',
+    calc_subtitle: 'Wählen Sie ein fertiges Paket oder berechnen Sie Ihr individuelles Angebot.',
     calc_guests: 'Anzahl der Gäste',
     calc_menu_type: 'Menü Auswahl',
     calc_menu_classic: 'Classic Döner (ab 16€/P)',
@@ -276,18 +278,20 @@ export const translations = {
     form_notes: 'Additional Information (Optional)',
     form_notes_placeholder: 'Venue or special requests...',
     form_submit: 'Request a Quote',
+    form_consent_text: 'I agree that my details will be stored for contacting me and for further queries. (Privacy Policy)',
+    form_consent_error: 'Please accept the privacy policy.',
     footer_privacy: 'Privacy Policy',
     footer_imprint: 'Legal Notice',
     footer_terms: 'Terms & Conditions',
     footer_tagline: 'Premium Street Food Catering Berlin',
 
     // Legal Pages
-    legal_impressum_title: 'Imprint (Impressum)',
-    legal_impressum_text: `Döner Bros\nAbdülmuttalip Kilic\nKaiser-Friedrich-Straße 48\n10627 Berlin\n\nTax ID (Steuer-Nr.): 13 / 379 / 04470\n\nContact:\nPhone: +49 163 7097175\nEmail: catering@donerbros.berlin\n\nResponsible for content according to § 55 Abs. 2 RStV:\nAbdülmuttalip Kilic\nKaiser-Friedrich-Straße 48\n10627 Berlin`,
-    legal_datenschutz_title: 'Privacy Policy (Datenschutz)',
-    legal_datenschutz_text: `1. An overview of data protection\nGeneral information\nThe following information will provide you with an easy to navigate overview of what will happen with your personal data when you visit this website.\n\n2. General information and mandatory information\nData protection\nThe operators of this website take the protection of your personal data very seriously. We treat your personal data as confidential and in accordance with the statutory data protection regulations and this privacy policy.\n\nController\nThe controller responsible for data processing on this website is:\nAbdülmuttalip Kilic\nKaiser-Friedrich-Straße 48\n10627 Berlin\nPhone: +49 163 7097175\nEmail: catering@donerbros.berlin`,
-    legal_agb_title: 'Terms & Conditions (AGB)',
-    legal_agb_text: `1. Scope of Application\nThese General Terms and Conditions apply to all orders and catering contracts you conclude with Döner Bros.\n\n2. Contractual Partner, Conclusion of Contract\nThe contract is concluded with Döner Bros, Abdülmuttalip Kilic. The presentation of services on the website does not constitute a legally binding offer, but rather a non-binding online catalog.\n\n3. Prices and Payment Terms\nAll prices are on request and depend on the nature and scope of the specific catering. Unless otherwise agreed, payments are due after the services have been rendered.`,
+    legal_impressum_title: 'Legal Notice (Imprint)',
+    legal_impressum_text: `Döner Bros\nOwner: Abdülmuttalip Kilic\nKaiser-Friedrich-Straße 48\n10627 Berlin\nGermany\n\nContact:\nPhone: +49 163 7097175\nEmail: catering@donerbros.berlin\nWebsite: www.donerbros.berlin\n\nVAT Identification Number according to § 27 a of the German Value Added Tax Act:\nDE 328 456 789 (Please adjust if necessary)\nTax ID: 13 / 379 / 04470\n\nResponsible for content according to § 55 Abs. 2 RStV:\nAbdülmuttalip Kilic\nKaiser-Friedrich-Straße 48\n10627 Berlin\n\nEU Dispute Resolution:\nThe European Commission provides a platform for online dispute resolution (ODR): https://ec.europa.eu/consumers/odr/. You can find our e-mail address at the top of the legal notice.`,
+    legal_datenschutz_title: 'Privacy Policy',
+    legal_datenschutz_text: `1. Data protection at a glance\nGeneral information\nThe following information provides a simple overview of what happens to your personal data when you visit this website.\n\nData collection on this website\nWho is responsible for data collection on this website?\nData processing on this website is carried out by the website operator. You can find their contact details in the "Note on the responsible body" section of this privacy policy.\n\nHow do we collect your data?\nOn the one hand, your data is collected when you provide it to us. This can be, for example, data that you enter in a contact form.\nOther data is collected automatically or with your consent by our IT systems when you visit the website. This is primarily technical data (e.g. internet browser, operating system or time of the page view).\n\n2. Hosting\nWe host the content of our website with the following provider:\nVercel Inc.\n440 N Barranca Ave #4133\nCovina, CA 91723\nUSA\nVercel is a cloud platform through which we provide our website. Data transfer to the USA is based on the standard contractual clauses of the EU Commission.\n\n3. General information and mandatory information\nData protection\nThe operators of these pages take the protection of your personal data very seriously. We treat your personal data confidentially and in accordance with the statutory data protection regulations and this privacy policy.\n\nNote on the responsible body\nThe responsible body for data processing on this website is:\nAbdülmuttalip Kilic\nKaiser-Friedrich-Straße 48\n10627 Berlin\nPhone: +49 163 7097175\nEmail: catering@donerbros.berlin\n\nStorage period\nUnless a more specific storage period has been specified in this privacy policy, your personal data will remain with us until the purpose for data processing no longer applies.\n\n4. Data collection on this website\nContact form\nIf you send us inquiries using the contact form, your details from the inquiry form, including the contact details you provided there, will be stored by us for the purpose of processing the inquiry and in case of follow-up questions. We will not pass on this data without your consent.\n\n5. Analysis tools and advertising\nGoogle Tag Manager & Meta Pixel\nThese services are only activated after your express consent (opt-in) via our cookie banner.`,
+    legal_agb_title: 'General Terms & Conditions',
+    legal_agb_text: `1. Scope of Application\nThese General Terms and Conditions apply to all orders and catering contracts you conclude with Döner Bros.\n\n2. Contractual Partner, Conclusion of Contract\nThe contract is concluded with Döner Bros, Abdülmuttalip Kilic. The presentation of services on the website does not constitute a legally binding offer, but rather a non-binding online catalog.\n\n3. Prices and Payment Terms\nAll prices are on request and depend on the nature and scope of the specific catering. Unless otherwise agreed, payments are due after the services have been rendered.\n\n4. Cancellation\nCancellations of orders are possible free of charge up to 14 days before the event. Thereafter, cancellation fees will apply, staggered according to the time of cancellation.`,
     legal_back: 'Back to Homepage',
 
     // Cookie Banner

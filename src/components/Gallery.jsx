@@ -3,9 +3,9 @@ import './Gallery.css';
 
 const videos = [
   // Fixed file extensions exactly as they appear in the public folder
-  { id: 1, src: '/gallery-1.mp4.mp4', title: 'Premium Kesim', poster: '/gallery-poster-1.png' },
-  { id: 2, src: '/gallery-2.mp4.mp4', title: 'Taze Malzemeler', poster: '/gallery-poster-2.png' },
-  { id: 3, src: '/gallery-3.mp4.mp4', title: 'Catering Deneyimi', poster: '/gallery-poster-3.png' }
+  { id: 1, src: '/gallery-1.mp4', title: 'Premium Kesim', poster: '/gallery-poster-1.png' },
+  { id: 2, src: '/gallery-2.mp4', title: 'Taze Malzemeler', poster: '/gallery-poster-2.png' },
+  { id: 3, src: '/gallery-3.mp4', title: 'Catering Deneyimi', poster: '/gallery-poster-3.png' }
 ];
 
 const GalleryVideo = ({ vid }) => {

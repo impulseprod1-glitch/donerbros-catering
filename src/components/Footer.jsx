@@ -8,12 +8,27 @@ const Footer = ({ onNavigate }) => {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
+    const [hasConsent, setHasConsent] = useState(localStorage.getItem('site_consent_v1') === 'accepted');
+
+    React.useEffect(() => {
+        const handleConsentChange = (e) => {
+            setHasConsent(e.detail === 'accepted');
+        };
+        window.addEventListener('consentChanged', handleConsentChange);
+        return () => window.removeEventListener('consentChanged', handleConsentChange);
+    }, []);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsLoading(true);
+        
+        const consentCheckbox = e.target.querySelector('#form-consent');
+        if (!consentCheckbox.checked) {
+            alert(t('form_consent_error'));
+            return;
+        }
 
+        setIsLoading(true);
         const formData = new FormData(e.target);
-        // Replace this with your actual Web3Forms Access Key
         formData.append("access_key", "YOUR_WEB3FORMS_ACCESS_KEY"); 
         
         const object = Object.fromEntries(formData);
@@ -33,7 +48,6 @@ const Footer = ({ onNavigate }) => {
             if (resData.success) {
                 setIsSubmitted(true);
                 e.target.reset();
-                // Form message resets after 5 seconds
                 setTimeout(() => setIsSubmitted(false), 5000);
             } else {
                 console.error("Form error:", resData);
@@ -73,17 +87,26 @@ const Footer = ({ onNavigate }) => {
 
                             {/* Embedded Google Map */}
                             <div className="google-map-container mt-4">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.1724041040854!2d13.300539177114851!3d52.50654053676878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a8511d731f8253%3A0xcfab0ccab1e0186!2sD%C3%B6nerBros.!5e0!3m2!1sen!2sde!4v1714150532134!5m2!1sen!2sde"
-                                    width="100%"
-                                    height="200"
-                                    style={{ border: 0, borderRadius: '12px' }}
-                                    allowFullScreen=""
-                                    loading="lazy"
-                                    referrerPolicy="no-referrer-when-downgrade"
-                                    title="Dönerbros Location Kaiser-Friedrich-Straße"
-                                    className="google-map-iframe"
-                                ></iframe>
+                                {hasConsent ? (
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.1724041040854!2d13.300539177114851!3d52.50654053676878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a8511d731f8253%3A0xcfab0ccab1e0186!2sD%C3%B6nerBros.!5e0!3m2!1sen!2sde!4v1714150532134!5m2!1sen!2sde"
+                                        width="100%"
+                                        height="200"
+                                        style={{ border: 0, borderRadius: '12px' }}
+                                        allowFullScreen=""
+                                        loading="lazy"
+                                        referrerPolicy="no-referrer-when-downgrade"
+                                        title="Dönerbros Location Kaiser-Friedrich-Straße"
+                                        className="google-map-iframe"
+                                    ></iframe>
+                                ) : (
+                                    <div className="map-placeholder">
+                                        <p>{t('cookie_text')}</p>
+                                        <button className="btn btn-outline btn-sm" onClick={() => window.dispatchEvent(new CustomEvent('consentChanged', { detail: 'accepted' }))}>
+                                            {t('cookie_accept')}
+                                        </button>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -127,6 +150,13 @@ const Footer = ({ onNavigate }) => {
                                 <div className="form-group">
                                     <label htmlFor="notes">{t('form_notes')}</label>
                                     <textarea id="notes" name="notes" rows="4" placeholder={t('form_notes_placeholder')}></textarea>
+                                </div>
+
+                                <div className="form-consent-group">
+                                    <input type="checkbox" id="form-consent" name="consent" required />
+                                    <label htmlFor="form-consent">
+                                        {t('form_consent_text')}
+                                    </label>
                                 </div>
 
                                 <button type="submit" className={`btn btn-primary w-full submit-btn ${isLoading ? 'loading' : ''}`} disabled={isLoading}>

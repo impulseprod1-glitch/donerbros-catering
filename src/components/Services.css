@@ -313,8 +313,13 @@
 }
 
 @media (max-width: 768px) {
+  .services {
+    padding: 4rem 0;
+  }
+
   .services-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   
   .section-title.text-shadow {
@@ -322,11 +327,33 @@
   }
   
   .service-card-premium {
-    max-width: 450px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .service-card-content {
+    padding: 2rem 1.5rem;
   }
   
   .service-card-premium:hover {
     transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 480px) {
+  .services {
+    padding: 3rem 0;
+  }
+
+  .section-title.text-shadow {
+    font-size: 1.8rem;
+  }
+
+  .service-title {
+    font-size: 1.4rem;
+  }
+
+  .service-description {
+    font-size: 0.95rem;
   }
 }

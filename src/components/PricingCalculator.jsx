@@ -42,6 +42,14 @@ const PricingCalculator = () => {
         setExtras(prev => ({ ...prev, [extra]: !prev[extra] }));
     };
 
+    const selectPackage = (type, guestCount) => {
+        setMenuType(type);
+        setGuests(guestCount);
+        // Scroll to calculator for feedback
+        const el = document.querySelector('.calculator-wrapper');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
+
     return (
         <section id="calculator" className="calculator section">
             <div className="container relative z-10">
@@ -59,7 +67,43 @@ const PricingCalculator = () => {
                     </h2>
                 </div>
 
-                <div className="calculator-wrapper reveal reveal-up delay-1">
+                {/* Package Quick Selection */}
+                <div className="package-selection-grid reveal reveal-up delay-1">
+                    <div className="package-card glass-panel bronze" onClick={() => selectPackage('classic', 50)}>
+                        <div className="package-badge">Standard</div>
+                        <h3>Classic Event</h3>
+                        <p>Döner Station mit frischen Beilagen & Saucen.</p>
+                        <div className="package-price">ab 16€<span>/Person</span></div>
+                        <ul className="package-features">
+                            <li><Utensils size={14}/> 100% Kalb oder Hähnchen</li>
+                            <li><Utensils size={14}/> Frisches Brot & Salate</li>
+                        </ul>
+                    </div>
+
+                    <div className="package-card glass-panel gold featured" onClick={() => selectPackage('mixed', 100)}>
+                        <div className="package-badge">Beliebt</div>
+                        <h3>Berlin Mixed</h3>
+                        <p>Der Klassiker: Rind & Hähnchen kombiniert mit Grillgemüse.</p>
+                        <div className="package-price">ab 20€<span>/Person</span></div>
+                        <ul className="package-features">
+                            <li><Flame size={14}/> Mixed Spiesse</li>
+                            <li><Flame size={14}/> Grillgemüse & Halloumi</li>
+                        </ul>
+                    </div>
+
+                    <div className="package-card glass-panel platinum" onClick={() => selectPackage('burger', 150)}>
+                        <div className="package-badge">Premium</div>
+                        <h3>Gourmet Burger</h3>
+                        <p>Saftige Burger & Premium Beilagen für höchste Ansprüche.</p>
+                        <div className="package-price">ab 22€<span>/Person</span></div>
+                        <ul className="package-features">
+                            <li><ChefHat size={14}/> Angus Beef Burger</li>
+                            <li><ChefHat size={14}/> Special Toppings</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div className="calculator-wrapper reveal reveal-up delay-2">
                     <div className="calc-card-border"></div>
                     <div className="calc-content">
                         <div className="calc-controls">
