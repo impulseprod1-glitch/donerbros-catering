@@ -7,36 +7,45 @@ const Intro = ({ onComplete }) => {
     const [phase, setPhase] = useState('glow'); // glow → logo → exit
 
     useEffect(() => {
-        console.log("Intro mounted - Phase: glow");
+        let isCompleted = false;
+
+        const complete = (source) => {
+            if (isCompleted) return;
+            isCompleted = true;
+            console.log(`Intro completion triggered via: ${source}`);
+            onComplete();
+        };
+
         // Phase 1: Slow glow (0 → 1.0s)
         const logoTimer = setTimeout(() => {
-            console.log("Intro Phase: logo");
             setPhase('logo');
         }, 1000);
 
         // Phase 2: Exit (2.8s → 3.6s)
         const exitTimer = setTimeout(() => {
-            console.log("Intro Phase: exit");
             setPhase('exit');
         }, 2800);
 
-        // Final Complete
+        // Final Complete (Animation finish)
         const completeTimer = setTimeout(() => {
-            console.log("Intro Complete - Unmounting");
-            onComplete();
-        }, 3600);
+            complete('animation_end');
+        }, 3800);
 
-        // Safety fallback: Force complete after 5 seconds no matter what
+        // Safety fallback: Force complete after 6 seconds
         const safetyTimer = setTimeout(() => {
-            console.log("Intro Safety Fallback Triggered");
-            onComplete();
-        }, 5000);
+            console.warn("Intro Safety Fallback Triggered - Unmounting forcefully");
+            complete('safety_timer');
+        }, 6000);
 
         return () => {
             clearTimeout(logoTimer);
             clearTimeout(exitTimer);
             clearTimeout(completeTimer);
             clearTimeout(safetyTimer);
+            // Ensure we trigger complete if unmounting for any other reason
+            if (!isCompleted) {
+                complete('unmount_cleanup');
+            }
         };
     }, [onComplete]);
 
