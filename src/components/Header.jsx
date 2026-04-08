@@ -34,6 +34,8 @@ const Header = ({ onNavigate }) => {
                         <span className={lang === 'de' ? 'active-lang' : ''}>DE</span>
                         <span className="lang-separator">/</span>
                         <span className={lang === 'en' ? 'active-lang' : ''}>EN</span>
+                        <span className="lang-separator">/</span>
+                        <span className={lang === 'tr' ? 'active-lang' : ''}>TR</span>
                     </button>
 
                     <a href="#iletisim" className="btn btn-primary">{t('nav_cta')}</a>
@@ -44,6 +46,8 @@ const Header = ({ onNavigate }) => {
                         <span className={lang === 'de' ? 'active-lang' : ''}>DE</span>
                         <span className="lang-separator">/</span>
                         <span className={lang === 'en' ? 'active-lang' : ''}>EN</span>
+                        <span className="lang-separator">/</span>
+                        <span className={lang === 'tr' ? 'active-lang' : ''}>TR</span>
                     </button>
                     <button
                         className="mobile-menu-btn"

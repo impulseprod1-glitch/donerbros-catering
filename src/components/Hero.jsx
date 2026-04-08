@@ -144,7 +144,7 @@ const Hero = () => {
                             </div>
                             <div className="stat-info">
                                 <strong>4.9/5 <Star size={14} fill="#fbbc04" color="#fbbc04" className="inline-star" /></strong>
-                                <span>Google Reviews</span>
+                                <span>{t('hero_stat_reviews')}</span>
                             </div>
                         </a>
                         <div className="stat-divider"></div>
@@ -152,7 +152,7 @@ const Hero = () => {
                             <div className="stat-icon"><Users size={18} /></div>
                             <div className="stat-info">
                                 <strong>200+</strong>
-                                <span>Events</span>
+                                <span>{t('hero_stat_events')}</span>
                             </div>
                         </div>
                         <div className="stat-divider"></div>
@@ -160,7 +160,7 @@ const Hero = () => {
                             <div className="stat-icon"><Clock size={18} /></div>
                             <div className="stat-info">
                                 <strong>24h</strong>
-                                <span>Response</span>
+                                <span>{t('hero_stat_response')}</span>
                             </div>
                         </div>
                     </div>
