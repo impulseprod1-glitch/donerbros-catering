@@ -1,3 +1,11 @@
 User-agent: *
 Allow: /
+Allow: /src/assets/
+Disallow: /private/
+Disallow: /admin/
+
+# Host
+Host: https://www.donerbros.berlin
+
+# Sitemaps
 Sitemap: https://www.donerbros.berlin/sitemap.xml
