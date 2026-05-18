@@ -29,7 +29,7 @@ const Footer = ({ onNavigate }) => {
 
         setIsLoading(true);
         const formData = new FormData(e.target);
-        formData.append("access_key", "YOUR_WEB3FORMS_ACCESS_KEY"); 
+        formData.append("access_key", "aa6bf325-9b75-4e1f-9069-3555d5ca8727"); 
         
         const object = Object.fromEntries(formData);
         const json = JSON.stringify(object);
