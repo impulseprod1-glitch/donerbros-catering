@@ -22,10 +22,10 @@ const Cart = () => {
     const [errors, setErrors] = useState({});
     const [bump, setBump] = useState(false);
 
-    const { delivery } = ORDER_SETTINGS;
+    const { delivery, showPrices } = ORDER_SETTINGS;
     const deliveryFee = orderType === 'delivery' ? delivery.fee : 0;
     const total = subtotal + deliveryFee;
-    const belowMin = orderType === 'delivery' && subtotal < delivery.minOrder;
+    const belowMin = showPrices && orderType === 'delivery' && subtotal < delivery.minOrder;
 
     // Bump animation for the floating bar when an item is added
     useEffect(() => {
@@ -83,12 +83,18 @@ const Cart = () => {
         out.push(orderType === 'delivery' ? '🛵 *Lieferung*' : '🏪 *Abholung*');
         out.push('');
         lines.forEach(({ item, qty, lineTotal }) => {
-            out.push(`${qty}× ${item.name.de} — ${f(lineTotal)}`);
+            if (showPrices) {
+                out.push(`${qty}× ${item.name.de} — ${f(lineTotal)}`);
+            } else {
+                out.push(`${qty}× ${item.name.de}`);
+            }
         });
-        out.push('──────────');
-        out.push(`Zwischensumme: ${f(subtotal)}`);
-        if (orderType === 'delivery') out.push(`Liefergebühr: ${deliveryFee ? f(deliveryFee) : 'kostenlos'}`);
-        out.push(`*Gesamt: ${f(total)}*`);
+        if (showPrices) {
+            out.push('──────────');
+            out.push(`Zwischensumme: ${f(subtotal)}`);
+            if (orderType === 'delivery') out.push(`Liefergebühr: ${deliveryFee ? f(deliveryFee) : 'kostenlos'}`);
+            out.push(`*Gesamt: ${f(total)}*`);
+        }
         out.push('');
         out.push(`👤 ${form.name.trim()}`);
         out.push(`📞 ${form.phone.trim()}`);
@@ -121,7 +127,11 @@ const Cart = () => {
                         <span className="floating-cart-count">{count}</span>
                     </span>
                     <span className="floating-cart-label">{t('cart_view')}</span>
-                    <span className="floating-cart-total">{formatPrice(subtotal, lang)}</span>
+                    {showPrices ? (
+                        <span className="floating-cart-total">{formatPrice(subtotal, lang)}</span>
+                    ) : (
+                        <span className="floating-cart-total">{count}×</span>
+                    )}
                 </button>
             )}
 
@@ -178,7 +188,7 @@ const Cart = () => {
                                             <img src={item.image} alt="" className="cart-line-img" />
                                             <div className="cart-line-info">
                                                 <span className="cart-line-name">{item.name[lang] || item.name.de}</span>
-                                                <span className="cart-line-unit">{formatPrice(item.price, lang)}</span>
+                                                {showPrices && <span className="cart-line-unit">{formatPrice(item.price, lang)}</span>}
                                                 <div className="cart-line-stepper">
                                                     <button onClick={() => removeItem(item.id)} aria-label="-"><Minus size={14} /></button>
                                                     <span>{qty}</span>
@@ -186,7 +196,7 @@ const Cart = () => {
                                                 </div>
                                             </div>
                                             <div className="cart-line-right">
-                                                <span className="cart-line-total">{formatPrice(lineTotal, lang)}</span>
+                                                {showPrices && <span className="cart-line-total">{formatPrice(lineTotal, lang)}</span>}
                                                 <button className="cart-line-delete" onClick={() => deleteItem(item.id)} aria-label={t('cart_remove')}><Trash2 size={16} /></button>
                                             </div>
                                         </li>
@@ -251,16 +261,20 @@ const Cart = () => {
                         </div>
 
                         <footer className="cart-footer">
-                            <div className="cart-sum-row"><span>{t('cart_subtotal')}</span><span>{formatPrice(subtotal, lang)}</span></div>
-                            {orderType === 'delivery' && (
-                                <div className="cart-sum-row"><span>{t('cart_delivery_fee')}</span><span>{deliveryFee ? formatPrice(deliveryFee, lang) : t('cart_free')}</span></div>
-                            )}
-                            <div className="cart-sum-row total"><span>{t('cart_total')}</span><span>{formatPrice(total, lang)}</span></div>
+                            {showPrices && (
+                                <>
+                                    <div className="cart-sum-row"><span>{t('cart_subtotal')}</span><span>{formatPrice(subtotal, lang)}</span></div>
+                                    {orderType === 'delivery' && (
+                                        <div className="cart-sum-row"><span>{t('cart_delivery_fee')}</span><span>{deliveryFee ? formatPrice(deliveryFee, lang) : t('cart_free')}</span></div>
+                                    )}
+                                    <div className="cart-sum-row total"><span>{t('cart_total')}</span><span>{formatPrice(total, lang)}</span></div>
 
-                            {belowMin && (
-                                <p className="cart-min-warning">
-                                    {t('cart_min_order').replace('{min}', formatPrice(delivery.minOrder, lang)).replace('{diff}', formatPrice(minDiff, lang))}
-                                </p>
+                                    {belowMin && (
+                                        <p className="cart-min-warning">
+                                            {t('cart_min_order').replace('{min}', formatPrice(delivery.minOrder, lang)).replace('{diff}', formatPrice(minDiff, lang))}
+                                        </p>
+                                    )}
+                                </>
                             )}
 
                             {step === 'cart' ? (

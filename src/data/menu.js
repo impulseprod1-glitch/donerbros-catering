@@ -15,6 +15,7 @@ export const ORDER_SETTINGS = {
     whatsappNumber: '491789209116',   // Ziel-Nummer für Bestellungen (ohne +, ohne 0)
     whatsappDisplay: '+49 178 9209116',
     currency: 'EUR',
+    showPrices: false,                // Fiyatlar geçici olarak gizlendi (kullanıcı isteği)
     delivery: {
         enabled: true,
         fee: 0,              // Liefergebühr in € (0 = kostenlos)

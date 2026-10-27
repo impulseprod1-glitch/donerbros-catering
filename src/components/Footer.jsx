@@ -79,7 +79,17 @@ const Footer = ({ onNavigate }) => {
                                 <li><Store size={20} /> <div><strong>{t('order_pickup')}</strong><span>{ORDER_SETTINGS.pickup.address}</span></div></li>
                             )}
                             {ORDER_SETTINGS.delivery.enabled && (
-                                <li><Bike size={20} /> <div><strong>{t('order_delivery')}</strong><span>{t('footer_delivery_info').replace('{min}', formatPrice(ORDER_SETTINGS.delivery.minOrder, lang))}</span></div></li>
+                                <li>
+                                    <Bike size={20} />
+                                    <div>
+                                        <strong>{t('order_delivery')}</strong>
+                                        <span>
+                                            {ORDER_SETTINGS.showPrices
+                                                ? t('footer_delivery_info').replace('{min}', formatPrice(ORDER_SETTINGS.delivery.minOrder, lang))
+                                                : t('footer_delivery_sub')}
+                                        </span>
+                                    </div>
+                                </li>
                             )}
                         </ul>
 

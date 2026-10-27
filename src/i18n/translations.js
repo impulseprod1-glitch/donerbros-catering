@@ -41,7 +41,7 @@ export const translations = {
     menu_subtitle: 'Wähle deine Favoriten, passe die Anzahl an und bestelle bequem per WhatsApp.',
     menu_add: 'In den Warenkorb',
     menu_popular: 'Beliebt',
-    menu_callout: 'Alle Preise inkl. gesetzlicher MwSt. Allergene und Zusatzstoffe erfährst du gerne auf Nachfrage bei unserem Team.',
+    menu_callout: 'Frisch zubereitet mit besten Zutaten. Allergene und Zusatzstoffe erfährst du gerne auf Nachfrage bei unserem Team.',
 
     // Reviews
     reviews_premium_subtitle: 'Gästebewertungen',
@@ -74,6 +74,7 @@ export const translations = {
     footer_order_title: 'Hunger? Jetzt bestellen!',
     footer_order_text: 'Wähle deine Lieblingsgerichte aus und schick uns deine Bestellung direkt über WhatsApp.',
     footer_delivery_info: 'Mindestbestellwert {min}',
+    footer_delivery_sub: 'Bequem und schnell zu dir geliefert',
     footer_privacy: 'Datenschutz',
     footer_imprint: 'Impressum',
     footer_terms: 'AGB',
@@ -180,7 +181,7 @@ export const translations = {
     menu_subtitle: 'Select your favorites, adjust quantities and order easily via WhatsApp.',
     menu_add: 'Add to Cart',
     menu_popular: 'Popular',
-    menu_callout: 'All prices include statutory VAT. Allergen and additive information is available from our team upon request.',
+    menu_callout: 'Freshly prepared with the best ingredients. Allergen and additive information is available from our team upon request.',
 
     // Reviews
     reviews_premium_subtitle: 'Guest Reviews',
@@ -213,6 +214,7 @@ export const translations = {
     footer_order_title: 'Hungry? Order now!',
     footer_order_text: 'Pick your favorites and send your order directly to us via WhatsApp.',
     footer_delivery_info: 'Minimum order {min}',
+    footer_delivery_sub: 'Fast and convenient delivery to your door',
     footer_privacy: 'Privacy Policy',
     footer_imprint: 'Legal Notice',
     footer_terms: 'Terms & Conditions',
@@ -319,7 +321,7 @@ export const translations = {
     menu_subtitle: 'Favori lezzetlerinizi seçin, sepete ekleyin ve WhatsApp üzerinden kolayca sipariş verin.',
     menu_add: 'Sepete Ekle',
     menu_popular: 'Popüler',
-    menu_callout: 'Tüm fiyatlara KDV dahildir. Alerjen ve içerik detayları için ekibimize danışabilirsiniz.',
+    menu_callout: 'En kaliteli malzemelerle taze olarak hazırlanır. Alerjen ve içerik detayları için ekibimize danışabilirsiniz.',
 
     // Reviews
     reviews_premium_subtitle: 'Müşteri Yorumları',
@@ -352,6 +354,7 @@ export const translations = {
     footer_order_title: 'Acıktınız mı? Hemen sipariş verin!',
     footer_order_text: 'Menümüzden seçiminizi yapın, siparişinizi doğrudan WhatsApp üzerinden iletin.',
     footer_delivery_info: 'Minimum teslimat tutarı: {min}',
+    footer_delivery_sub: 'Hızlı ve pratik adrese teslimat',
     footer_privacy: 'Gizlilik Politikası',
     footer_imprint: 'Künye',
     footer_terms: 'Şartlar ve Koşullar',

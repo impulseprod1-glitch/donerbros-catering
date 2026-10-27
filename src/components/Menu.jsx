@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Plus, Minus, Flame } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useCart } from '../context/CartContext';
-import { MENU_CATEGORIES, MENU_ITEMS, formatPrice } from '../data/menu';
+import { MENU_CATEGORIES, MENU_ITEMS, formatPrice, ORDER_SETTINGS } from '../data/menu';
 import useScrollReveal from '../hooks/useScrollReveal';
 import './Menu.css';
 
@@ -81,8 +81,12 @@ const Menu = () => {
                                         <div className="menu-item-body">
                                             <div className="menu-item-header">
                                                 <h3 className="menu-item-name">{name}</h3>
-                                                <div className="menu-item-dots"></div>
-                                                <span className="menu-item-price">{formatPrice(item.price, lang)}</span>
+                                                {ORDER_SETTINGS.showPrices && (
+                                                    <>
+                                                        <div className="menu-item-dots"></div>
+                                                        <span className="menu-item-price">{formatPrice(item.price, lang)}</span>
+                                                    </>
+                                                )}
                                             </div>
                                             <p className="menu-item-desc">{item.desc[lang] || item.desc.de}</p>
 
