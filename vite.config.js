@@ -10,9 +10,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'robots.txt', 'vite.svg'],
       manifest: {
-        name: 'Dönerbros Catering',
+        name: 'Dönerbros Berlin',
         short_name: 'Dönerbros',
-        description: 'Premium Döner Catering Berlin',
+        description: 'Premium Döner bestellen in Berlin – Abholung & Lieferung',
         theme_color: '#d4af37',
         icons: [
           {

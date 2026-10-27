@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { ORDER_SETTINGS } from '../data/menu';
 import './WhatsAppButton.css';
 
 const WhatsAppButton = () => {
     const { t } = useLanguage();
     const [isVisible, setIsVisible] = useState(false);
     const [showBubble, setShowBubble] = useState(false);
-    const phoneNumber = "491789209116"; // 01789209116 without the starting 0, with 49
+    const phoneNumber = ORDER_SETTINGS.whatsappNumber; // configured in src/data/menu.js
     const message = t('wa_message');
 
     useEffect(() => {

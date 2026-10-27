@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ShoppingBag } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { useCart } from '../context/CartContext';
 import './Header.css';
 
 const Header = ({ onNavigate }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { lang, toggleLanguage, t } = useLanguage();
+    const { count, openCart } = useCart();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -15,6 +17,19 @@ const Header = ({ onNavigate }) => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const navLinks = [
+        { href: '#menu', label: t('nav_menu') },
+        { href: '#so-gehts', label: t('nav_process') },
+        { href: '#kontakt', label: t('nav_contact') },
+    ];
+
+    const CartButton = ({ id }) => (
+        <button id={id} className="header-cart-btn" onClick={openCart} aria-label={t('cart_title')}>
+            <ShoppingBag size={20} />
+            {count > 0 && <span key={count} className="header-cart-count">{count}</span>}
+        </button>
+    );
 
     return (
         <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
@@ -25,9 +40,9 @@ const Header = ({ onNavigate }) => {
 
                 <div className="desktop-menu">
                     <nav>
-                        <a href="#hizmetler" className="nav-link" onClick={onNavigate}>{t('nav_services')}</a>
-                        <a href="#menu" className="nav-link" onClick={onNavigate}>{t('nav_menu')}</a>
-                        <a href="#surec" className="nav-link" onClick={onNavigate}>{t('nav_process')}</a>
+                        {navLinks.map(l => (
+                            <a key={l.href} href={l.href} className="nav-link" onClick={onNavigate}>{l.label}</a>
+                        ))}
                     </nav>
 
                     <button className="lang-toggle" onClick={toggleLanguage} aria-label="Toggle Language">
@@ -38,7 +53,9 @@ const Header = ({ onNavigate }) => {
                         <span className={lang === 'tr' ? 'active-lang' : ''}>TR</span>
                     </button>
 
-                    <a href="#iletisim" className="btn btn-primary">{t('nav_cta')}</a>
+                    <CartButton id="header-cart-desktop" />
+
+                    <a href="#menu" className="btn btn-primary" onClick={onNavigate}>{t('nav_cta')}</a>
                 </div>
 
                 <div className="mobile-right">
@@ -49,9 +66,11 @@ const Header = ({ onNavigate }) => {
                         <span className="lang-separator">/</span>
                         <span className={lang === 'tr' ? 'active-lang' : ''}>TR</span>
                     </button>
+                    <CartButton id="header-cart-mobile" />
                     <button
                         className="mobile-menu-btn"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        aria-label="Menu"
                     >
                         {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
                     </button>
@@ -61,10 +80,10 @@ const Header = ({ onNavigate }) => {
             {/* Mobile Menu */}
             <div className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}>
                 <nav>
-                    <a href="#hizmetler" className="mobile-link" onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate(); }}>{t('nav_services')}</a>
-                    <a href="#menu" className="mobile-link" onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate(); }}>{t('nav_menu')}</a>
-                    <a href="#surec" className="mobile-link" onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate(); }}>{t('nav_process')}</a>
-                    <a href="#iletisim" className="btn btn-primary w-full text-center mt-4" onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate(); }}>{t('nav_cta')}</a>
+                    {navLinks.map(l => (
+                        <a key={l.href} href={l.href} className="mobile-link" onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate(); }}>{l.label}</a>
+                    ))}
+                    <a href="#menu" className="btn btn-primary w-full text-center mt-4" onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate(); }}>{t('nav_cta')}</a>
                 </nav>
             </div>
         </header>

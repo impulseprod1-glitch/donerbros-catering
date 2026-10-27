@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import './index.css';
 import { LanguageProvider } from './context/LanguageContext';
+import { CartProvider } from './context/CartContext';
 import Intro from './components/Intro';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Services from './components/Services';
 import Menu from './components/Menu';
-import PricingCalculator from './components/PricingCalculator';
+import Cart from './components/Cart';
 import Gallery from './components/Gallery';
 import Reviews from './components/Reviews';
 import Process from './components/Process';
@@ -29,6 +29,7 @@ function App() {
 
   return (
     <LanguageProvider>
+      <CartProvider>
       {showIntro && <Intro onComplete={handleIntroComplete} />}
       <div className="app">
         <Header onNavigate={() => setCurrentPage('home')} />
@@ -36,12 +37,10 @@ function App() {
         {currentPage === 'home' ? (
           <main>
             <Hero />
-            <Services />
+            <Process />
             <Menu />
-            <PricingCalculator />
             <Gallery />
             <Reviews />
-            <Process />
           </main>
         ) : (
           <Legal page={currentPage} onBack={() => setCurrentPage('home')} />
@@ -52,9 +51,13 @@ function App() {
         {/* Global floating WhatsApp Button */}
         <WhatsAppButton />
 
+        {/* Order cart: floating bar + checkout drawer */}
+        <Cart />
+
         {/* DSGVO Consent Manager (AdBlock-safe) */}
         <ConsentManager />
       </div>
+      </CartProvider>
     </LanguageProvider>
   );
 }

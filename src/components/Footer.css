@@ -363,3 +363,69 @@ input:focus, select:focus, textarea:focus {
     justify-content: center;
   }
 }
+
+/* Order CTA card (replaces catering quote form) */
+.order-cta-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.1rem;
+}
+
+.order-cta-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  color: #000;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+  box-shadow: 0 14px 35px rgba(212, 175, 55, 0.3);
+}
+
+.order-cta-title {
+  font-family: var(--font-heading);
+  font-size: 1.7rem;
+  color: var(--text-primary);
+}
+
+.order-cta-text {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.order-cta-options {
+  list-style: none;
+  padding: 0;
+  margin: 0.3rem 0 0.6rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.order-cta-options li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--brand-primary);
+}
+
+.order-cta-options li div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.order-cta-options strong {
+  color: var(--text-primary);
+}
+
+.order-cta-options span {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}

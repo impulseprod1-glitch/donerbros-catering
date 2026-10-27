@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Instagram, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, ShoppingBag, Store, Bike } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { useCart } from '../context/CartContext';
+import { ORDER_SETTINGS, formatPrice } from '../data/menu';
 import './Footer.css';
 
 const Footer = ({ onNavigate }) => {
-    const { t } = useLanguage();
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    const { t, lang } = useLanguage();
+    const { count, openCart } = useCart();
 
     const [hasConsent, setHasConsent] = useState(localStorage.getItem('site_consent_v1') === 'accepted');
 
@@ -18,54 +19,11 @@ const Footer = ({ onNavigate }) => {
         return () => window.removeEventListener('consentChanged', handleConsentChange);
     }, []);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        
-        const consentCheckbox = e.target.querySelector('#form-consent');
-        if (!consentCheckbox.checked) {
-            alert(t('form_consent_error'));
-            return;
-        }
-
-        setIsLoading(true);
-        const formData = new FormData(e.target);
-        formData.append("access_key", "aa6bf325-9b75-4e1f-9069-3555d5ca8727"); 
-        
-        const object = Object.fromEntries(formData);
-        const json = JSON.stringify(object);
-
-        try {
-            const res = await fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                },
-                body: json
-            });
-            const resData = await res.json();
-
-            if (resData.success) {
-                setIsSubmitted(true);
-                e.target.reset();
-                setTimeout(() => setIsSubmitted(false), 5000);
-            } else {
-                console.error("Form error:", resData);
-                alert(t('form_error'));
-            }
-        } catch (error) {
-            console.error("Submission error:", error);
-            alert(t('form_error'));
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
     return (
-        <footer id="iletisim" className="footer">
+        <footer id="kontakt" className="footer">
             <div className="container">
 
-                {/* Booking & Contact Form Section */}
+                {/* Order CTA & Contact Section */}
                 <div className="booking-section">
                     <div className="booking-content">
                         <h2 className="booking-title">{t('footer_title_1')}<span className="text-gradient">{t('footer_title_2')}</span></h2>
@@ -111,58 +69,28 @@ const Footer = ({ onNavigate }) => {
                         </div>
                     </div>
 
-                    <div className="booking-form-wrapper">
-                        {isSubmitted ? (
-                            <div className="form-success-wrapper">
-                                <CheckCircle size={64} className="success-icon" />
-                                <h3>{t('form_success')}</h3>
-                            </div>
+                    <div className="booking-form-wrapper order-cta-card">
+                        <div className="order-cta-icon"><ShoppingBag size={34} /></div>
+                        <h3 className="order-cta-title">{t('footer_order_title')}</h3>
+                        <p className="order-cta-text">{t('footer_order_text')}</p>
+
+                        <ul className="order-cta-options">
+                            {ORDER_SETTINGS.pickup.enabled && (
+                                <li><Store size={20} /> <div><strong>{t('order_pickup')}</strong><span>{ORDER_SETTINGS.pickup.address}</span></div></li>
+                            )}
+                            {ORDER_SETTINGS.delivery.enabled && (
+                                <li><Bike size={20} /> <div><strong>{t('order_delivery')}</strong><span>{t('footer_delivery_info').replace('{min}', formatPrice(ORDER_SETTINGS.delivery.minOrder, lang))}</span></div></li>
+                            )}
+                        </ul>
+
+                        {count > 0 ? (
+                            <button id="footer-open-cart" className="btn btn-primary w-full btn-large" onClick={openCart}>
+                                {t('cart_view')} ({count})
+                            </button>
                         ) : (
-                            <form className="booking-form" onSubmit={handleSubmit}>
-                                <div className="form-row">
-                                    <div className="form-group">
-                                        <label htmlFor="name">{t('form_name')}</label>
-                                        <input id="name" name="name" type="text" placeholder={t('form_name_placeholder')} required />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="email">{t('form_email')}</label>
-                                        <input id="email" name="email" type="email" placeholder={t('form_email_placeholder')} required />
-                                    </div>
-                                </div>
-
-                                <div className="form-row">
-                                    <div className="form-group">
-                                        <label htmlFor="date">{t('form_date')}</label>
-                                        <input id="date" name="date" type="date" required />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="guests">{t('form_guests')}</label>
-                                        <select id="guests" name="guests" required>
-                                            <option value="">{t('form_guests_placeholder')}</option>
-                                            <option value="50-100">{t('form_guests_50')}</option>
-                                            <option value="100-200">{t('form_guests_100')}</option>
-                                            <option value="200-300">{t('form_guests_300')}</option>
-                                            <option value="300+">{t('form_guests_500')}</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div className="form-group">
-                                    <label htmlFor="notes">{t('form_notes')}</label>
-                                    <textarea id="notes" name="notes" rows="4" placeholder={t('form_notes_placeholder')}></textarea>
-                                </div>
-
-                                <div className="form-consent-group">
-                                    <input type="checkbox" id="form-consent" name="consent" required />
-                                    <label htmlFor="form-consent">
-                                        {t('form_consent_text')}
-                                    </label>
-                                </div>
-
-                                <button type="submit" className={`btn btn-primary w-full submit-btn ${isLoading ? 'loading' : ''}`} disabled={isLoading}>
-                                    {isLoading ? '...' : t('form_submit')}
-                                </button>
-                            </form>
+                            <a id="footer-order-now" href="#menu" className="btn btn-primary w-full btn-large">
+                                {t('nav_cta')}
+                            </a>
                         )}
                     </div>
                 </div>

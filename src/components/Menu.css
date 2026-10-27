@@ -299,6 +299,104 @@
   z-index: 1;
 }
 
+/* =========================================
+   ORDERING UI
+   ========================================= */
+.menu .menu-grid {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.menu-item-premium.in-cart .card-border-gradient-menu {
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+}
+
+.menu-item-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #000;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+  box-shadow: 0 6px 18px rgba(230, 126, 34, 0.35);
+}
+
+.menu-item-qty-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  min-width: 38px;
+  height: 38px;
+  padding: 0 0.6rem;
+  display: grid;
+  place-items: center;
+  border-radius: 100px;
+  background: rgba(10, 10, 10, 0.75);
+  border: 1px solid var(--brand-primary);
+  color: var(--brand-primary);
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+  animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.menu-item-actions {
+  margin-top: auto;
+  padding-top: 1.4rem;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.qty-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 100px;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  background: rgba(212, 175, 55, 0.08);
+  padding: 0.3rem;
+  animation: popIn 0.3s ease;
+}
+
+.qty-stepper button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #000;
+  background: var(--brand-primary);
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.qty-stepper button:hover {
+  transform: scale(1.08);
+  background: var(--brand-secondary);
+}
+
+.qty-value {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--text-primary);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
 @keyframes fadeInMenu {
   from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
@@ -307,6 +405,15 @@
 /* Responsive */
 @media (max-width: 992px) {
   .menu-grid {
+    grid-template-columns: 1fr;
+  }
+  .menu .menu-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .menu .menu-grid {
     grid-template-columns: 1fr;
   }
 }

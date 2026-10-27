@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useMemo } from 'react';
-import { ArrowRight, Star, Award, Users, Clock } from 'lucide-react';
+import { ArrowRight, Star, Award, Bike, MessageCircle } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import './Hero.css';
 
@@ -123,10 +123,10 @@ const Hero = () => {
                     <p className="hero-subtitle">{t('hero_subtitle')}</p>
 
                     <div className="hero-actions">
-                        <a href="#iletisim" className="btn btn-primary btn-large btn-glow">
+                        <a href="#menu" id="hero-order-btn" className="btn btn-primary btn-large btn-glow">
                             {t('hero_cta_primary')} <ArrowRight size={20} className="icon-right" />
                         </a>
-                        <a href="#menu" className="btn btn-outline btn-large">
+                        <a href="#so-gehts" id="hero-how-btn" className="btn btn-outline btn-large">
                             {t('hero_cta_secondary')}
                         </a>
                     </div>
@@ -149,17 +149,17 @@ const Hero = () => {
                         </a>
                         <div className="stat-divider"></div>
                         <div className="stat-item">
-                            <div className="stat-icon"><Users size={18} /></div>
+                            <div className="stat-icon"><Bike size={18} /></div>
                             <div className="stat-info">
-                                <strong>200+</strong>
+                                <strong>{t('hero_stat_2_value')}</strong>
                                 <span>{t('hero_stat_events')}</span>
                             </div>
                         </div>
                         <div className="stat-divider"></div>
                         <div className="stat-item">
-                            <div className="stat-icon"><Clock size={18} /></div>
+                            <div className="stat-icon"><MessageCircle size={18} /></div>
                             <div className="stat-info">
-                                <strong>24h</strong>
+                                <strong>WhatsApp</strong>
                                 <span>{t('hero_stat_response')}</span>
                             </div>
                         </div>
@@ -235,7 +235,7 @@ const Hero = () => {
                                 
                                 <img
                                     src="hero-image.png"
-                                    alt="Premium Döner Catering Berlin - Dönerbros"
+                                    alt="Döner bestellen in Berlin - Dönerbros"
                                     className="hero-image"
                                 />
                             </video>

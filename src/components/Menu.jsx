@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { Plus, Minus, Flame } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { useCart } from '../context/CartContext';
+import { MENU_CATEGORIES, MENU_ITEMS, formatPrice } from '../data/menu';
 import useScrollReveal from '../hooks/useScrollReveal';
 import './Menu.css';
 
 const Menu = () => {
-    const [activeTab, setActiveTab] = useState('doner_station');
-    const { t } = useLanguage();
+    const [activeTab, setActiveTab] = useState(MENU_CATEGORIES[0].id);
+    const { t, lang } = useLanguage();
+    const { quantities, addItem, removeItem } = useCart();
     const reveal = useScrollReveal();
 
     // Trigger reveal animation manually on tab switch
@@ -18,23 +22,7 @@ const Menu = () => {
         return () => clearTimeout(timer);
     }, [activeTab, reveal]);
 
-    const menuItems = {
-        doner_station: [
-            { id: 1, nameKey: 'menu_item_1_name', descKey: 'menu_item_1_desc', priceKey: 'menu_price_default', image: '/menu-beef-doner.png' },
-            { id: 2, nameKey: 'menu_item_2_name', descKey: 'menu_item_2_desc', priceKey: 'menu_price_default', image: '/menu-chicken-doner.png' },
-            { id: 3, nameKey: 'menu_item_3_name', descKey: 'menu_item_3_desc', priceKey: 'menu_price_default', image: '/menu-mixed-doner.png' }
-        ],
-        burger_station: [
-            { id: 4, nameKey: 'menu_item_4_name', descKey: 'menu_item_4_desc', priceKey: 'menu_price_default', image: '/menu-burgers.png' },
-            { id: 5, nameKey: 'menu_item_5_name', descKey: 'menu_item_5_desc', priceKey: 'menu_price_default', image: '/menu-street-food.png' },
-            { id: 8, nameKey: 'menu_item_8_name', descKey: 'menu_item_8_desc', priceKey: 'menu_price_default', image: '/menu-burgers.png' } // Fallback to burgers for BBQ
-        ],
-        vegan_veggie: [
-            { id: 6, nameKey: 'menu_item_6_name', descKey: 'menu_item_6_desc', priceKey: 'menu_price_default', image: '/menu-vegan.png' },
-            { id: 7, nameKey: 'menu_item_7_name', descKey: 'menu_item_7_desc', priceKey: 'menu_price_default', image: '/menu-falafel.png' },
-            { id: 9, nameKey: 'menu_item_9_name', descKey: 'menu_item_9_desc', priceKey: 'menu_price_default', image: '/menu-vegan.png' }
-        ]
-    };
+    const items = MENU_ITEMS.filter(i => i.category === activeTab);
 
     return (
         <section id="menu" className="menu section">
@@ -57,57 +45,69 @@ const Menu = () => {
                     <p className="section-subtitle-large">{t('menu_subtitle')}</p>
                 </div>
 
-                <div className="menu-tabs reveal reveal-up delay-1">
-                    <button
-                        className={`tab-btn ${activeTab === 'doner_station' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('doner_station')}
-                    >
-                        <span className="tab-text">{t('menu_tab_doner')}</span>
-                        <div className="tab-glow"></div>
-                    </button>
-                    <button
-                        className={`tab-btn ${activeTab === 'burger_station' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('burger_station')}
-                    >
-                        <span className="tab-text">{t('menu_tab_burger')}</span>
-                        <div className="tab-glow"></div>
-                    </button>
-                    <button
-                        className={`tab-btn ${activeTab === 'vegan_veggie' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('vegan_veggie')}
-                    >
-                        <span className="tab-text">{t('menu_tab_vegan')}</span>
-                        <div className="tab-glow"></div>
-                    </button>
+                <div className="menu-tabs reveal reveal-up delay-1" role="tablist">
+                    {MENU_CATEGORIES.map(cat => (
+                        <button
+                            key={cat.id}
+                            id={`menu-tab-${cat.id}`}
+                            role="tab"
+                            aria-selected={activeTab === cat.id}
+                            className={`tab-btn ${activeTab === cat.id ? 'active' : ''}`}
+                            onClick={() => setActiveTab(cat.id)}
+                        >
+                            <span className="tab-text">{cat.label[lang] || cat.label.de}</span>
+                            <div className="tab-glow"></div>
+                        </button>
+                    ))}
                 </div>
 
                 <div className="menu-content">
                     <div key={activeTab} className="menu-grid">
-                        {menuItems[activeTab].map((item, index) => (
-                            <div key={item.id} className={`menu-item-premium group reveal reveal-up delay-${(index % 3) + 1}`}>
-                                <div className="card-border-gradient-menu"></div>
-                                <div className="menu-item-content">
-                                    {/* Package Image */}
-                                    <div className="menu-item-image-wrapper">
-                                        <img
-                                            src={item.image}
-                                            alt={t(item.nameKey)}
-                                            className="menu-item-image"
-                                            loading="lazy"
-                                        />
-                                        <div className="menu-item-image-overlay"></div>
-                                    </div>
-                                    <div className="menu-item-body">
-                                        <div className="menu-item-header">
-                                            <h3 className="menu-item-name">{t(item.nameKey)}</h3>
-                                            <div className="menu-item-dots"></div>
-                                            <span className="menu-item-price">{t(item.priceKey)}</span>
+                        {items.map((item, index) => {
+                            const qty = quantities[item.id] || 0;
+                            const name = item.name[lang] || item.name.de;
+                            return (
+                                <article key={item.id} className={`menu-item-premium group reveal reveal-up delay-${(index % 3) + 1} ${qty ? 'in-cart' : ''}`}>
+                                    <div className="card-border-gradient-menu"></div>
+                                    <div className="menu-item-content">
+                                        <div className="menu-item-image-wrapper">
+                                            <img src={item.image} alt={name} className="menu-item-image" loading="lazy" />
+                                            <div className="menu-item-image-overlay"></div>
+                                            {item.popular && (
+                                                <span className="menu-item-badge"><Flame size={14} /> {t('menu_popular')}</span>
+                                            )}
+                                            {qty > 0 && <span className="menu-item-qty-badge">{qty}×</span>}
                                         </div>
-                                        <p className="menu-item-desc">{t(item.descKey)}</p>
+                                        <div className="menu-item-body">
+                                            <div className="menu-item-header">
+                                                <h3 className="menu-item-name">{name}</h3>
+                                                <div className="menu-item-dots"></div>
+                                                <span className="menu-item-price">{formatPrice(item.price, lang)}</span>
+                                            </div>
+                                            <p className="menu-item-desc">{item.desc[lang] || item.desc.de}</p>
+
+                                            <div className="menu-item-actions">
+                                                {qty === 0 ? (
+                                                    <button
+                                                        id={`add-${item.id}`}
+                                                        className="btn btn-primary add-to-cart-btn"
+                                                        onClick={() => addItem(item.id)}
+                                                    >
+                                                        <Plus size={18} /> {t('menu_add')}
+                                                    </button>
+                                                ) : (
+                                                    <div className="qty-stepper" aria-label={name}>
+                                                        <button id={`dec-${item.id}`} onClick={() => removeItem(item.id)} aria-label="-"><Minus size={18} /></button>
+                                                        <span className="qty-value">{qty}</span>
+                                                        <button id={`inc-${item.id}`} onClick={() => addItem(item.id)} aria-label="+"><Plus size={18} /></button>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        ))}
+                                </article>
+                            );
+                        })}
                     </div>
                 </div>
 
