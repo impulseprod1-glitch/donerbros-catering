@@ -34,9 +34,9 @@ const Footer = ({ onNavigate }) => {
                                 <Phone size={20} className="info-icon" />
                                 <span>+49 163 7097175</span>
                             </a>
-                            <a href="mailto:catering@donerbros.berlin" className="info-block info-block-link">
+                            <a href="mailto:info@donerbros.berlin" className="info-block info-block-link">
                                 <Mail size={20} className="info-icon" />
-                                <span>catering@donerbros.berlin</span>
+                                <span>info@donerbros.berlin</span>
                             </a>
                             <a href="https://www.google.com/maps/place/D%C3%B6nerBros./@52.5065405,13.3005392,17z/" target="_blank" rel="noopener noreferrer" className="info-block info-block-link">
                                 <MapPin size={20} className="info-icon" />
