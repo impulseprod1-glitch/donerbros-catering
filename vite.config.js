@@ -9,10 +9,15 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'robots.txt', 'vite.svg'],
+      workbox: {
+        cleanupOutdatedCaches: true,
+        skipWaiting: true,
+        clientsClaim: true,
+      },
       manifest: {
         name: 'Dönerbros Berlin',
         short_name: 'Dönerbros',
-        description: 'Premium Döner bestellen in Berlin – Abholung & Lieferung',
+        description: 'Premium Döner bestellen in Berlin – Online Bestellen & Lieferung',
         theme_color: '#d4af37',
         icons: [
           {
